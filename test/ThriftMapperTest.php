@@ -4,6 +4,7 @@ namespace ThriftMapperTest;
 
 use ThriftMapper\ThriftMapper;
 use ThriftTest\Bonk;
+use ThriftTest\NestedListsBonk;
 use ThriftTest\Insanity;
 
 class ThriftMapperTest extends \PHPUnit_Framework_TestCase
@@ -34,5 +35,36 @@ class ThriftMapperTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($ary['xtructs'][0]['byte_thing'], $insanity->xtructs[0]->byte_thing);
         $this->assertSame($ary['xtructs'][0]['i32_thing'], $insanity->xtructs[0]->i32_thing);
         $this->assertSame($ary['xtructs'][0]['i64_thing'], $insanity->xtructs[0]->i64_thing);
+    }
+
+    public function testNestedListBonk()
+    {
+        $ary = [
+            'bonk' => [
+                [
+                    [
+                        ['message' => '1', 'type' => 1],
+                        ['message' => '2', 'type' => 2],
+                    ],
+                ],
+                [
+                    [
+                        ['message' => '3', 'type' => 3],
+                        ['message' => '4', 'type' => 4],
+                    ],
+                ],
+            ],
+        ];
+        $insanity = ThriftMapper::map(new NestedListsBonk(), $ary);
+
+        $this->assertSame($ary['bonk'][0][0][0]['message'], $insanity->bonk[0][0][0]->message);
+        $this->assertSame($ary['bonk'][0][0][0]['type'], $insanity->bonk[0][0][0]->type);
+        $this->assertSame($ary['bonk'][0][0][1]['message'], $insanity->bonk[0][0][1]->message);
+        $this->assertSame($ary['bonk'][0][0][1]['type'], $insanity->bonk[0][0][1]->type);
+
+        $this->assertSame($ary['bonk'][1][0][0]['message'], $insanity->bonk[1][0][0]->message);
+        $this->assertSame($ary['bonk'][1][0][0]['type'], $insanity->bonk[1][0][0]->type);
+        $this->assertSame($ary['bonk'][1][0][1]['message'], $insanity->bonk[1][0][1]->message);
+        $this->assertSame($ary['bonk'][1][0][1]['type'], $insanity->bonk[1][0][1]->type);
     }
 }
