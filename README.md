@@ -64,11 +64,24 @@ Now, if I want to convert my PHP array to this class, there is no easy way.
 
 It populates the Thrift object with the PHP array.
 
-```
+```php
 $ary = [
   "message" => "Hello!",
   "type" => 123,
 ];
 
 $bonk = ThriftMapper::map(new Bonk(), $ary);
+
+var_dump($bonk);
+```
+
+This code outputs;
+
+```
+object(ThriftTest\Bonk)#19 (2) {
+  ["message"]=>
+  string(6) "Hello!"
+  ["type"]=>
+  int(123)
+}
 ```
