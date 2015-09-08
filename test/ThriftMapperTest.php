@@ -67,4 +67,13 @@ class ThriftMapperTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($ary['bonk'][1][0][1]['message'], $insanity->bonk[1][0][1]->message);
         $this->assertSame($ary['bonk'][1][0][1]['type'], $insanity->bonk[1][0][1]->type);
     }
+
+    public function testBadType()
+    {
+        $this->setExpectedException('\ThriftMapper\ThriftMapperException');
+        $ary = [
+            'userMap' => 'Bad!',
+        ];
+        $insanity = ThriftMapper::map(new Insanity(), $ary);
+    }
 }

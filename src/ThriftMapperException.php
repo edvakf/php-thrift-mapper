@@ -2,7 +2,7 @@
 
 namespace ThriftMapper;
 
-class ThriftMapperException extends Exception
+class ThriftMapperException extends \Exception
 {
     public function __construct($msg)
     {
