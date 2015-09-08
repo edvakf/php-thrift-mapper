@@ -2,6 +2,8 @@
 
 Convert a PHP array into an Apache Thrift struct type.
 
+[![Build Status](https://travis-ci.org/edvakf/php-thrift-mapper.svg)](https://travis-ci.org/edvakf/php-thrift-mapper)
+
 ## What is this?
 
 A Thrift struct;
