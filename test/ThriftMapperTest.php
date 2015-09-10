@@ -70,7 +70,7 @@ class ThriftMapperTest extends \PHPUnit_Framework_TestCase
 
     public function testBadType()
     {
-        $this->setExpectedException('\ThriftMapper\ThriftMapperException');
+        $this->setExpectedException('\ThriftMapper\MapException');
         $ary = [
             'userMap' => 'Bad!',
         ];

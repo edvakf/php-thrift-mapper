@@ -31,7 +31,7 @@ class ThriftMapper
         } else if ($type === TType::LST || $type === TType::SET) {
 
             if (!is_array($phpVal)) {
-                throw new ThriftMapperException("Value must be an array: " . $path);
+                throw new MapException("Value must be an array: " . $path);
             }
             $lst = [];
             foreach ($phpVal as $i => $v) {
@@ -42,7 +42,7 @@ class ThriftMapper
         } else if ($type === TType::MAP) {
 
             if (!is_array($phpVal)) {
-                throw new ThriftMapperException("Value must be an associative array: " . $path);
+                throw new MapException("Value must be an associative array: " . $path);
             }
             $map = [];
             foreach ($phpVal as $k => $v) {
