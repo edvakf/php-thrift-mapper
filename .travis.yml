@@ -11,3 +11,4 @@ install:
   - composer install
 script:
   - ./vendor/bin/phpunit
+  - if [ "$(php --version | grep 'PHP 5.6')" != "" ]; then ./vendor/bin/coveralls -v; fi
