@@ -22,14 +22,11 @@ class ThriftMapper
 
     private static function map_($spec, $phpVal, $path)
     {
-        $type = $spec['type'];
-
-        if ($type === TType::STRUCT) {
-
+        switch ($spec['type']) {
+        case TType::STRUCT:
             return self::map(new $spec['class'], $phpVal, $path);
-
-        } else if ($type === TType::LST || $type === TType::SET) {
-
+        case TType::LST:
+        case TType::SET:
             if (!is_array($phpVal)) {
                 throw new MapException("Value must be an array: " . $path);
             }
@@ -38,9 +35,7 @@ class ThriftMapper
                 $lst[] = self::map_($spec['elem'], $v, $path . '[' . $i . ']');
             }
             return $lst;
-
-        } else if ($type === TType::MAP) {
-
+        case TType::MAP:
             if (!is_array($phpVal)) {
                 throw new MapException("Value must be an associative array: " . $path);
             }
@@ -50,11 +45,8 @@ class ThriftMapper
                     self::map_($spec['val'], $v, $path . '[' . $k . ']');
             }
             return $map;
-
-        } else {
-
+        default:
             return $phpVal;
-
         }
     }
 
