@@ -2,7 +2,7 @@
 
 Convert a PHP array into an Apache Thrift struct type.
 
-[![Build Status](https://travis-ci.org/edvakf/php-thrift-mapper.svg)](https://travis-ci.org/edvakf/php-thrift-mapper)
+[![Build Status](https://travis-ci.org/edvakf/php-thrift-mapper.svg)](https://travis-ci.org/edvakf/php-thrift-mapper) [![Coverage Status](https://coveralls.io/repos/edvakf/php-thrift-mapper/badge.svg?branch=coveralls&service=github)](https://coveralls.io/github/edvakf/php-thrift-mapper?branch=coveralls)
 
 ## What is this?
 
